@@ -27,16 +27,20 @@ class PaymentHandler: NSObject {
                 PKPaymentAuthorizationController.canMakePayments(usingNetworks: supportedNetworks))
     }
     
-    func startPayment(for donation: Donation, completion: @escaping PaymentCompletionHandler) {
+    func startPayment(for donation: Donation?, completion: @escaping PaymentCompletionHandler) {
+        guard let donation = donation else {
+            completion(false)
+            return
+        }
         completionHandler = completion
         
         let taxAmount = calculateTax(for: donation.amount)
         let totalAmount = calculateTotal(for: donation.amount)
         
-        let donation = PKPaymentSummaryItem(label: donation.name, amount: NSDecimalNumber(string: donation.amount))
-        let tax = PKPaymentSummaryItem(label: "Skatt", amount: NSDecimalNumber(string: taxAmount))
-        let total = PKPaymentSummaryItem(label: "Totalsumma", amount: NSDecimalNumber(string: totalAmount))
-        paymentSummaryItems = [donation, tax, total]
+        let donationItem = PKPaymentSummaryItem(label: donation.name, amount: NSDecimalNumber(string: donation.amount))
+        let taxItem = PKPaymentSummaryItem(label: "Skatt", amount: NSDecimalNumber(string: taxAmount))
+        let totalItem = PKPaymentSummaryItem(label: "Totalsumma", amount: NSDecimalNumber(string: totalAmount))
+        paymentSummaryItems = [donationItem, taxItem, totalItem]
         
         let paymentRequest = PKPaymentRequest()
         paymentRequest.paymentSummaryItems = paymentSummaryItems
