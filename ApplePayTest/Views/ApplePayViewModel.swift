@@ -16,4 +16,12 @@ class ApplePayViewModel: ObservableObject {
     init(paymentHandler: PaymentHandler = PaymentHandler()) {
         self.paymentHandler = paymentHandler
     }
+    
+    func pressPay() {
+        paymentHandler.startPayment(for: donation) { [weak self] success in
+            if success {
+                self?.transactionSucceeded = true
+            }
+        }
+    }
 }

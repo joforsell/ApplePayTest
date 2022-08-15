@@ -53,11 +53,7 @@ struct ContentView: View {
             }
             Spacer()
             ApplePayButton {
-                vm.paymentHandler.startPayment(for: vm.donation) { success in
-                    if success {
-                        vm.transactionSucceeded = true
-                    }
-                }
+                vm.pressPay()
             }
             .padding()
             .disabled(vm.donation == nil)
