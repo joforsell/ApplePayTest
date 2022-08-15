@@ -8,13 +8,14 @@
 import Foundation
 
 struct Donation: Identifiable, Equatable {
-    let id = UUID()
+    let id: String = UUID().uuidString
     let name: String
-    let amount: String
+    let amount: Double
+    let imageName: String
     
     static let examples = [
-        Donation(name: "Kaffe", amount: "30"),
-        Donation(name: "Pizza", amount: "100"),
-        Donation(name: "Finmiddag", amount: "300")
+        Donation(name: "Coffee", amount: 30, imageName: "coffeecup"),
+        Donation(name: "Pizza", amount: 100, imageName: "pizza"),
+        Donation(name: "Fancy dinner", amount: 300, imageName: "lobster")
     ]
 }

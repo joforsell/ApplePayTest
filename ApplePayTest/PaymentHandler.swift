@@ -37,8 +37,8 @@ class PaymentHandler: NSObject {
         let taxAmount = calculateTax(for: donation.amount)
         let totalAmount = calculateTotal(for: donation.amount)
         
-        let donationItem = PKPaymentSummaryItem(label: donation.name, amount: NSDecimalNumber(string: donation.amount))
-        let taxItem = PKPaymentSummaryItem(label: "Skatt", amount: NSDecimalNumber(string: taxAmount))
+        let donationItem = PKPaymentSummaryItem(label: donation.name, amount: NSDecimalNumber(string: String(donation.amount)))
+        let taxItem = PKPaymentSummaryItem(label: "Moms", amount: NSDecimalNumber(string: taxAmount))
         let totalItem = PKPaymentSummaryItem(label: "Totalsumma", amount: NSDecimalNumber(string: totalAmount))
         paymentSummaryItems = [donationItem, taxItem, totalItem]
         
@@ -62,15 +62,13 @@ class PaymentHandler: NSObject {
         }
     }
     
-    private func calculateTax(for donationAmount: String) -> String {
-        guard let amount = Double(donationAmount) else { return "" }
-        return String(amount * 0.2)
+    private func calculateTax(for donationAmount: Double) -> String {
+        return String(donationAmount * 0.2)
     }
     
-    private func calculateTotal(for donationAmount: String) -> String {
-        guard let amount = Double(donationAmount) else { return "" }
-        let tax = amount * 0.2
-        return String(amount + tax)
+    private func calculateTotal(for donationAmount: Double) -> String {
+        let tax = donationAmount * 0.2
+        return String(donationAmount + tax)
     }
 }
 

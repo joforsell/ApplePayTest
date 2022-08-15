@@ -14,23 +14,40 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Text("Make a donation to your favourite developer!")
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .padding()
+                .padding(.top, 40)
             Spacer()
             HStack(spacing: 20) {
                 ForEach(Donation.examples) { donation in
                     VStack {
-                        Text(donation.name)
-                        Text(donation.amount)
-                    }
-                    .frame(maxHeight: 80)
-                    .frame(width: 100)
-                    .foregroundColor(.white)
-                    .background(vm.donation == donation ? Color.black : Color.gray)
-                    .scaleEffect(vm.donation == donation ? 1.2 : 1)
-                    .cornerRadius(20)
-                    .onTapGesture {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            vm.donation = donation
+                        VStack {
+                            Image(donation.imageName)
+                                .resizable()
+                                .scaledToFill()
                         }
+                        .frame(maxHeight: 80)
+                        .frame(width: 100)
+                        .foregroundColor(.black)
+                        .background(vm.donation == donation ? Color.appOrange.cornerRadius(20).padding(2) : Color.appYellow.cornerRadius(20).padding(2))
+                        .scaleEffect(vm.donation == donation ? 1.2 : 1)
+                        .onTapGesture {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                if vm.donation == donation {
+                                    vm.donation = nil
+                                } else {
+                                    vm.donation = donation
+                                }
+                            }
+                        }
+                        VStack {
+                            Text(donation.name)
+                            Text(donation.amount.formatted() + " kr")
+                                .font(.caption)
+                        }
+                        .padding()
                     }
                 }
             }
