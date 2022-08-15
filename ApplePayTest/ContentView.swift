@@ -43,6 +43,11 @@ struct ContentView: View {
                 }
             }
             .padding()
+            .disabled(vm.donation == nil)
+            .opacity(vm.donation == nil ? 0.4 : 1)
+        }
+        .sheet(isPresented: $vm.transactionSucceeded, onDismiss: { vm.donation = nil }) {
+            DonationView(donation: vm.donation)
         }
     }
 }

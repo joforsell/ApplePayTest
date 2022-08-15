@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E706FEC28AAC23100B4EFD2 /* DonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E706FEB28AAC23100B4EFD2 /* DonationView.swift */; };
 		3E78E4DD28A975CC00FC7D57 /* ApplePayTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E4DC28A975CC00FC7D57 /* ApplePayTestApp.swift */; };
 		3E78E4DF28A975CC00FC7D57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E78E4DE28A975CC00FC7D57 /* ContentView.swift */; };
 		3E78E4E128A975CE00FC7D57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E78E4E028A975CE00FC7D57 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E706FEB28AAC23100B4EFD2 /* DonationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationView.swift; sourceTree = "<group>"; };
 		3E78E4D928A975CC00FC7D57 /* ApplePayTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplePayTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E78E4DC28A975CC00FC7D57 /* ApplePayTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayTestApp.swift; sourceTree = "<group>"; };
 		3E78E4DE28A975CC00FC7D57 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3E78E50628A9821000FC7D57 /* ApplePayTest.entitlements */,
 				3E78E4DC28A975CC00FC7D57 /* ApplePayTestApp.swift */,
 				3E78E4DE28A975CC00FC7D57 /* ContentView.swift */,
+				3E706FEB28AAC23100B4EFD2 /* DonationView.swift */,
 				3E78E50728A9829C00FC7D57 /* ApplePayButton.swift */,
 				3E78E50928A9850600FC7D57 /* ApplePayViewModel.swift */,
 				3E78E50B28A985ED00FC7D57 /* PaymentHandler.swift */,
@@ -278,6 +281,7 @@
 				3E78E50C28A985ED00FC7D57 /* PaymentHandler.swift in Sources */,
 				3E78E51028A98C1000FC7D57 /* Configuration.swift in Sources */,
 				3E78E4DF28A975CC00FC7D57 /* ContentView.swift in Sources */,
+				3E706FEC28AAC23100B4EFD2 /* DonationView.swift in Sources */,
 				3E78E50E28A9884E00FC7D57 /* Donation.swift in Sources */,
 				3E78E50A28A9850600FC7D57 /* ApplePayViewModel.swift in Sources */,
 				3E78E4DD28A975CC00FC7D57 /* ApplePayTestApp.swift in Sources */,
