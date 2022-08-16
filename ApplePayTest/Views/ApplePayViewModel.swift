@@ -11,9 +11,9 @@ class ApplePayViewModel: ObservableObject {
     @Published var transactionSucceeded: Bool = false
     @Published var donation: Donation?
     
-    let paymentHandler: PaymentHandler
+    let paymentHandler: PaymentHandling
     
-    init(paymentHandler: PaymentHandler = PaymentHandler()) {
+    init(paymentHandler: PaymentHandling = PaymentHandler()) {
         self.paymentHandler = paymentHandler
     }
     

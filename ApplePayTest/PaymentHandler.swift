@@ -10,7 +10,11 @@ import PassKit
 
 typealias PaymentCompletionHandler = (Bool) -> Void
 
-class PaymentHandler: NSObject {
+protocol PaymentHandling {
+    func startPayment(for donation: Donation?, completion: @escaping PaymentCompletionHandler)
+}
+
+class PaymentHandler: NSObject, PaymentHandling {
     
     var paymentController: PKPaymentAuthorizationController?
     var paymentSummaryItems = [PKPaymentSummaryItem]()
@@ -76,6 +80,10 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         let errors = [Error]()
         let status = PKPaymentAuthorizationStatus.success
+        
+        // Send the payment token to the server or payment provider to process here.
+        // Once processed, return an appropriate status in the completion handler (success, failure, and so on).
+        
         self.paymentStatus = status
         completion(PKPaymentAuthorizationResult(status: status, errors: errors))
     }
