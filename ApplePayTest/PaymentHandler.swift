@@ -42,8 +42,8 @@ class PaymentHandler: NSObject, PaymentHandling {
         let totalAmount = calculateTotal(for: donation.amount)
         
         let donationItem = PKPaymentSummaryItem(label: donation.name, amount: NSDecimalNumber(string: String(donation.amount)))
-        let taxItem = PKPaymentSummaryItem(label: "Moms", amount: NSDecimalNumber(string: taxAmount))
-        let totalItem = PKPaymentSummaryItem(label: "Totalsumma", amount: NSDecimalNumber(string: totalAmount))
+        let taxItem = PKPaymentSummaryItem(label: "Tax", amount: NSDecimalNumber(string: taxAmount))
+        let totalItem = PKPaymentSummaryItem(label: "Total", amount: NSDecimalNumber(string: totalAmount))
         paymentSummaryItems = [donationItem, taxItem, totalItem]
         
         let paymentRequest = PKPaymentRequest()
@@ -83,6 +83,8 @@ extension PaymentHandler: PKPaymentAuthorizationControllerDelegate {
         
         // Send the payment token to the server or payment provider to process here.
         // Once processed, return an appropriate status in the completion handler (success, failure, and so on).
+
+        // Currently always sends a successful authorization status.
         
         self.paymentStatus = status
         completion(PKPaymentAuthorizationResult(status: status, errors: errors))

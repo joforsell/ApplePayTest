@@ -59,8 +59,7 @@ struct ContentView: View {
             .disabled(vm.donation == nil)
             .opacity(vm.donation == nil ? 0.4 : 1)
         }
-        .sheet(isPresented: $vm.transactionSucceeded,
-               onDismiss: {
+        .sheet(isPresented: $vm.transactionSucceeded, onDismiss: {
             withAnimation {
                 vm.donation = nil
             }
